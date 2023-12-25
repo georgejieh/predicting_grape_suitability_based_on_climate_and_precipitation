@@ -21,9 +21,6 @@ options = Options()
 
 # Set Chrome options
 options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.6099.72 Safari/537.36')
-options.add_argument("--disable-images")
-options.add_argument("--disable-extensions")
-options.add_argument("--disable-gpu")
 options.add_argument("--headless")
 
 service = Service(ChromeDriverManager().install())
@@ -54,10 +51,8 @@ page_counter = 0
 for idx, row in df.iterrows():
     url = row['URL']
     driver.get(url)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # Scroll to the bottom of the page
-    time.sleep(2)
     page_counter += 1
-    if page_counter > 25:
+    if page_counter > 100:
             driver.delete_all_cookies()
             driver.execute_script("window.localStorage.clear();")
             driver.execute_script("window.sessionStorage.clear();")
@@ -65,8 +60,6 @@ for idx, row in df.iterrows():
             service = Service(ChromeDriverManager().install())
             driver = webdriver.Chrome(service=service, options=options)
             driver.get(url)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")  # Scroll to the bottom of the page
-            time.sleep(2)
             page_counter = 0
     try:
         WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.CLASS_NAME, 'review-title')))
