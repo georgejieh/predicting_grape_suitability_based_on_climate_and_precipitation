@@ -90,7 +90,7 @@
                     if(data.error) {
                         $('#result').html('<div>' + data.error + '</div>');
                     } else {
-                        var recommendation = 'Based on the current training of our predictive model and utilizing the historical climate data from your provided address, our recommendation for the most suitable grape varietal is: <strong>' + data[0].predict + '</strong>. This suggestion is derived from our best available data and model insights, which are continuously updated to enhance accuracy. Additionally, we also suggest considering these other varietals which show promising results: ';
+                        var recommendation = "Based on the current training of our predictive model and utilizing only the past year's worth of historical climate data from your provided address, our recommendation for the most suitable grape varietal is: <strong>" + data[0].predict + "</strong>. This suggestion is derived from our best available data and model insights, which are continuously updated to enhance accuracy. Additionally, we also suggest considering these other varietals which show promising results: ";
                         var sortedData = Object.entries(data[0]).sort((a, b) => b[1] - a[1]).slice(1, 6);
                         sortedData.forEach(function(item, index) {
                             if (index < 4) { // Display top 4 alternatives
