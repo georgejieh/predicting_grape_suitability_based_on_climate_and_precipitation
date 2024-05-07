@@ -63,7 +63,7 @@ We utilized various machine learning models:
 
 ## Final Presentation: Web Application
 
-The project is encapsulated in a Flask web application that interacts with the H2O model. Users input an address and country; the app then predicts the suitability of each grape varietal based on the past year's weather data, displaying confidence scores for each prediction.
+The project is encapsulated in a Flask web application that interacts with the H2O model. Users input an address and country; the app then predicts the suitability of each grape varietal based on the past year's weather data, then displays the top five grape varietals it is most confident in.
 
 ## Impact and Future Work
 
